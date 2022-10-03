@@ -95,3 +95,42 @@ span {
 span:hover {
   background-color: #3b3b3b;
 }
+
+#msg {
+  color: red;
+  font-weight: bold;
+}
+
+/* Media queries section */
+@media (max-width: 500px) and (orientation: portrait) {
+  div.first-container input {
+    width: 290px;
+  }
+  div.second-container input[type="date"] {
+    width: 110px;
+  }
+
+  div.second-container input[type="text"] {
+    width: 100px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+
+  table {
+    /* width: auto; */
+    padding: 0px 5px;
+  }
+
+  #table-sect {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-container {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
