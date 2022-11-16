@@ -28,25 +28,26 @@ function deleteRow(event) {
 function render(table) {
   let tableHTML = "";
   let tableItems = "";
-  // Loop for each row
-  for (let i = 0; i < table.length; i++) {
-    // Loop for each cell
-    for (let j = 0; j < table[i].length; j++) {
-      tableItems += `<td class= "cell${[j]}">${table[i][j]}</td> `;
-    }
+
+  table.forEach((row, i) => {
+    row.forEach((column, j) => {
+      tableItems += `<td class= "cell${j}">${column}</td> `;
+    });
     tableItems += `<td><span onclick="deleteRow(event)" id="row${i}">X</span></td>`;
     tableHTML += `<tr> ${tableItems} </tr>`;
-    //empty table items at the end of the loop to avoid congestion of the previous tableItems stored in the variable
+    //empty table items
     tableItems = "";
-  }
+  });
   // setting the table body innerHTML to the tableHTML variable
   tableBody.innerHTML = tableHTML;
 }
 
-inputBtn.addEventListener("click", function () {
+inputBtn.addEventListener("click", () => {
+  // Appending the dollar sign to the amountEl.value
+  const dollarAppend = `$${amountEl.value}`;
   // making sure the input is valid and the user isn't passing an empty string
   if (name.value != "" && dateEl.value != "" && amountEl.value != "") {
-    myTable.push([name.value, dateEl.value, amountEl.value]);
+    myTable.push([name.value, dateEl.value, dollarAppend]);
     //   emptying the input boxes as soon as the content as been pushed to the array
     name.value = "";
     dateEl.value = "";
